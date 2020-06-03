@@ -22,6 +22,7 @@ const Layout: FC<Props> = (props) => {
         },
         contentContainer: {
             flex: 1,
+            paddingHorizontal: 16,
         },
     });
 

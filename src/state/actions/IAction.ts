@@ -1,6 +1,7 @@
 import { IPost, PostWithDate } from "../state/IPost";
 import { ActionType } from "./ActionType";
 import { IAppAction } from "./IAppAction";
+import { IActionWithPayload } from "./utils";
 
 // TODO consider approach similar to the financial-app
 export type IAnyAction = IPostAction | IAppAction;
@@ -45,10 +46,10 @@ export interface IPostsFetchFailedTimeoutExceeded {
     error: true;
 }
 
-export interface IPostSendRequested {
-    type: ActionType.PostSendRequested;
-    payload: IPost;
-}
+export type IPostSendRequested = IActionWithPayload<
+    ActionType.PostSendRequested,
+    IPost
+>;
 
 export interface IPostSendFailed {
     type: ActionType.PostSendFailed;
@@ -71,13 +72,6 @@ export interface IPostSendFailedTimeoutExceeded {
         error: Error;
     };
     error: true;
-}
-
-export interface INetInfoChanged {
-    type: ActionType.NetInfoChanged;
-    payload: {
-        connected: boolean;
-    };
 }
 
 export interface ISetNotificationsState {

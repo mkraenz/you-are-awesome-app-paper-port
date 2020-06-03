@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import { Divider, Paragraph, Switch } from "react-native-paper";
 import { connect } from "react-redux";
 import Layout from "../components/common/Layout";
@@ -10,13 +10,6 @@ import { Route } from "../navigation/Route";
 import { toggleDarkTheme } from "../state/action-creators/toggleDarkTheme";
 import { MapStateToProps } from "../state/state/MapStateToProps";
 import version from "../utils/version.json";
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingHorizontal: 16,
-    },
-});
 
 interface StateProps {
     isDarkModeOn: boolean;
@@ -31,22 +24,20 @@ const SettingsScreen: FC<Props> = ({ isDarkModeOn, toggleDarkTheme }) => {
     const { t } = useTranslation();
     return (
         <Layout route={Route.Settings}>
-            <View style={styles.container}>
-                <SettingsRow
-                    title={t("darkMode")}
-                    onPress={toggleDarkTheme}
-                    rightComponent={() => (
-                        <Switch
-                            value={isDarkModeOn}
-                            onValueChange={toggleDarkTheme}
-                        ></Switch>
-                    )}
-                ></SettingsRow>
-                <Divider />
-                <LanguageDropdownRow />
-                <Divider />
-                <About />
-            </View>
+            <SettingsRow
+                title={t("darkMode")}
+                onPress={toggleDarkTheme}
+                rightComponent={() => (
+                    <Switch
+                        value={isDarkModeOn}
+                        onValueChange={toggleDarkTheme}
+                    ></Switch>
+                )}
+            ></SettingsRow>
+            <Divider />
+            <LanguageDropdownRow />
+            <Divider />
+            <About />
         </Layout>
     );
 };

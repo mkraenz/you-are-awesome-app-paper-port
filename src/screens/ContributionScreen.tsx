@@ -45,7 +45,7 @@ const ContributionScreen: FC<Props> = ({ connectedToInternet, addPost }) => {
 
     return (
         <Layout route={Route.Contribute}>
-            {!connectedToInternet && <OfflineNotice />}
+            {connectedToInternet && <OfflineNotice />}
             <AddPostInput handleSubmit={handleSubmit} />
         </Layout>
     );

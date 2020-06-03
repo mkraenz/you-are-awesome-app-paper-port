@@ -7,7 +7,13 @@ type keys =
     | "appTitle"
     | "language"
     | "copyright"
-    | "buildVersion";
+    | "noInternet"
+    | "buildVersion"
+    | "contributeAwesomeMessage"
+    | "contributeAwesomeMessageLong"
+    | "contributeCountry"
+    | "contributeSubmit"
+    | "contributeName";
 
 export interface ITranslations extends Resource {
     default: { [key in keys]: string } & { [key in Route]: string };
@@ -34,11 +40,18 @@ const localization: {
             settings: "Settings",
             appTitle: "You are Awesome App!",
             language: "Language",
-            copyright: "Copyright © Mirco Kraenz 2020",
+            copyright:
+                "Copyright © Kraenz Software Development\nMirco Kraenz 2020",
             [Route.Home]: "Home",
             [Route.Settings]: "Settings",
-            [Route.Share]: "Share",
+            [Route.Contribute]: "Contribute",
             buildVersion: "Build version",
+            noInternet: "No Internet Connection",
+            contributeAwesomeMessage: "Awesome Message",
+            contributeAwesomeMessageLong: "Your awesome message to the world",
+            contributeCountry: "Country",
+            contributeName: "First Name",
+            contributeSubmit: "Submit",
         },
     },
     de: {
@@ -47,11 +60,18 @@ const localization: {
             settings: "Einstellungen",
             appTitle: "You are Awesome App!",
             language: "Sprache",
-            copyright: "Copyright © Mirco Kraenz 2020",
+            copyright:
+                "Copyright © Kraenz Software Development\nMirco Kraenz 2020",
             [Route.Home]: "Start",
             [Route.Settings]: "Einstellungen",
-            [Route.Share]: "Teilen",
+            [Route.Contribute]: "Teilen",
             buildVersion: "Programmversion",
+            noInternet: "Keine Internetverbindung",
+            contributeAwesomeMessage: "Awesome Nachricht",
+            contributeAwesomeMessageLong: "Deine awesome Nachricht an die Welt",
+            contributeCountry: "Land",
+            contributeName: "Vorname",
+            contributeSubmit: "Senden",
         },
     },
     ja: {
@@ -60,11 +80,19 @@ const localization: {
             settings: "設定",
             appTitle: "You are Awesome App!",
             language: "言語",
-            copyright: "Copyright © Mirco Kraenz 2020",
+            copyright:
+                "Copyright © Kraenz Software Development\nMirco Kraenz 2020",
             [Route.Home]: "ホーム",
             [Route.Settings]: "設定",
-            [Route.Share]: "シェア",
+            [Route.Contribute]: "シェア",
             buildVersion: "ビルドバージョン",
+            noInternet: "インターネットに接続できませんでした",
+            contributeAwesomeMessage: "すごいメッセージ",
+            contributeAwesomeMessageLong:
+                "世界の皆さんに伝いたいすごいメッセージ",
+            contributeCountry: "国",
+            contributeName: "ニックネーム",
+            contributeSubmit: "送信",
         },
     },
 };

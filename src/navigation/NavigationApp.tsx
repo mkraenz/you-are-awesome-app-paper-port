@@ -4,9 +4,9 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "react-native-paper";
 import TabBarIcon from "../components/navigation/TabBarIcon";
+import ContributionScreen from "../screens/ContributionScreen";
 import HomeScreen from "../screens/HomeScreen";
 import SettingsScreen from "../screens/SettingsScreen";
-import ShareScreen from "../screens/ShareScreen";
 import { Route } from "./Route";
 
 const Tab = createMaterialBottomTabNavigator();
@@ -18,8 +18,8 @@ const NavigationApp = () => {
         <NavigationContainer theme={theme as any}>
             <Tab.Navigator initialRouteName={t(Route.Home)}>
                 <Tab.Screen
-                    name={t(Route.Share)}
-                    component={ShareScreen}
+                    name={t(Route.Contribute)}
+                    component={ContributionScreen}
                     options={{
                         tabBarIcon: ({ focused }) => (
                             <TabBarIcon focused={focused} name="share-alt" />
