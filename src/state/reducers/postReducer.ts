@@ -6,9 +6,12 @@ import { IPostsState } from "../state/IPostsState";
 
 export const initialPost: IPost = {
     id: "0",
-    text: "Loading...",
-    author: "",
-    country: "",
+    // text: "Loading...",
+    // author: "",
+    // country: "", // TODO delete
+    author: "Max",
+    country: "Germany",
+    text: "You can make a change. Stay awesome as you are!",
 };
 
 export const postReducer: Reducer<IPostsState, IPostAction> = (

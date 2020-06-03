@@ -3,6 +3,8 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import localization from "./localization";
 
+const DEBUG = false;
+
 const languageDetector = {
     type: "languageDetector" as const,
     async: true, // flags below detection to be async
@@ -21,7 +23,7 @@ i18n.use(languageDetector)
         resources,
         fallbackLng: "en",
         defaultNS: "default",
-        debug: true,
+        debug: DEBUG,
         interpolation: {
             escapeValue: false, // not needed; default behavior of react
         },

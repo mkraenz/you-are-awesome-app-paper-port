@@ -4,35 +4,41 @@ import {
 } from "@react-navigation/native";
 import { DarkTheme, DefaultTheme, Theme } from "react-native-paper";
 
-type PriceColors = {
-    colors: { positive: string; negative: string };
-};
-
 type NavigationTheme = typeof NavDarkTheme | typeof NavDefaultTheme;
 
-export type FullTheme = Theme & PriceColors & NavigationTheme;
+export type FullTheme = Theme &
+    NavigationTheme & { colors: { accentedCard: string } };
+
+export enum Color {
+    LightBlue = "#89cff0",
+    Blue = "#1084ff",
+    Violet = "#4e148c",
+    DarkGrey = "#202c39",
+    Grey = "#272727",
+}
 
 export const lightTheme: FullTheme = {
     ...NavDefaultTheme,
     ...DefaultTheme,
+    roundness: 12,
     colors: {
         ...NavDefaultTheme.colors,
         ...DefaultTheme.colors,
-        primary: "#4e148c",
-        positive: "#4cbb17",
-        negative: "#f00",
+        primary: Color.Blue,
+        accent: "white",
+        accentedCard: NavDefaultTheme.colors.card,
     },
 };
 
 export const darkTheme: FullTheme = {
     ...NavDarkTheme,
     ...DarkTheme,
+    roundness: 12,
     colors: {
         ...NavDarkTheme.colors,
         ...DarkTheme.colors,
-        primary: "#4e148c",
-        card: "#202c39",
-        positive: "#00ff00",
-        negative: "#ff2400",
+        primary: Color.Violet,
+        card: DarkTheme.colors.surface,
+        accentedCard: Color.Grey,
     },
 };

@@ -1,18 +1,16 @@
 import { Resource } from "i18next";
 import { Route } from "../navigation/Route";
 
+type keys =
+    | "darkMode"
+    | "settings"
+    | "appTitle"
+    | "language"
+    | "copyright"
+    | "buildVersion";
+
 export interface ITranslations extends Resource {
-    default: {
-        darkMode: string;
-        favoritesEmpty: string;
-        settings: string;
-        favorites: string;
-        appTitle: string;
-        preferAbsoluteOverPercent: string;
-        language: string;
-        [Route.Home]: string;
-        [Route.Settings]: string;
-    };
+    default: { [key in keys]: string } & { [key in Route]: string };
 }
 
 export enum Language {
@@ -33,40 +31,40 @@ const localization: {
     en: {
         default: {
             darkMode: "Dark mode",
-            favoritesEmpty: "No favorites selected yet.",
-            favorites: "Watchlist",
             settings: "Settings",
             appTitle: "You are Awesome App!",
-            preferAbsoluteOverPercent: "prefer absolute over %",
             language: "Language",
+            copyright: "Copyright © Mirco Kraenz 2020",
             [Route.Home]: "Home",
             [Route.Settings]: "Settings",
+            [Route.Share]: "Share",
+            buildVersion: "Build version",
         },
     },
     de: {
         default: {
             darkMode: "Nachtmodus",
-            favoritesEmpty: "Bislang keine Favoriten ausgewählt.",
             settings: "Einstellungen",
-            favorites: "Favoriten",
             appTitle: "You are Awesome App!",
-            preferAbsoluteOverPercent: "bevorzuge absolut gegenüber %",
             language: "Sprache",
-            [Route.Home]: "Home",
+            copyright: "Copyright © Mirco Kraenz 2020",
+            [Route.Home]: "Start",
             [Route.Settings]: "Einstellungen",
+            [Route.Share]: "Teilen",
+            buildVersion: "Programmversion",
         },
     },
     ja: {
         default: {
             darkMode: "ダークモード",
-            favoritesEmpty: "お気に入り（０）",
             settings: "設定",
-            favorites: "お気に入り",
             appTitle: "You are Awesome App!",
-            preferAbsoluteOverPercent: "絶対量を%より優先する",
             language: "言語",
-            [Route.Home]: "すごい",
+            copyright: "Copyright © Mirco Kraenz 2020",
+            [Route.Home]: "ホーム",
             [Route.Settings]: "設定",
+            [Route.Share]: "シェア",
+            buildVersion: "ビルドバージョン",
         },
     },
 };

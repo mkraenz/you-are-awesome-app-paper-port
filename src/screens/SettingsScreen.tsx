@@ -1,28 +1,73 @@
 import React, { FC } from "react";
+import { useTranslation } from "react-i18next";
 import { StyleSheet, View } from "react-native";
-import { Card, Paragraph } from "react-native-paper";
+import { Divider, Paragraph, Switch } from "react-native-paper";
+import { connect } from "react-redux";
+import Layout from "../components/common/Layout";
+import LanguageDropdownRow from "../components/settings/LanguageDropdown";
+import SettingsRow from "../components/settings/SettingsRow";
+import { Route } from "../navigation/Route";
+import { toggleDarkTheme } from "../state/action-creators/toggleDarkTheme";
+import { MapStateToProps } from "../state/state/MapStateToProps";
+import version from "../utils/version.json";
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
+        paddingHorizontal: 16,
     },
 });
 
-interface Props {}
+interface StateProps {
+    isDarkModeOn: boolean;
+}
+interface DispatchProps {
+    toggleDarkTheme: () => void;
+}
 
-const SettingsScreen: FC<Props> = ({}) => {
+type Props = StateProps & DispatchProps;
+
+const SettingsScreen: FC<Props> = ({ isDarkModeOn, toggleDarkTheme }) => {
+    const { t } = useTranslation();
     return (
-        <View style={styles.container}>
-            <Card>
-                <Card.Content>
-                    <Paragraph>settings here</Paragraph>
-                </Card.Content>
-            </Card>
+        <Layout route={Route.Settings}>
+            <View style={styles.container}>
+                <SettingsRow
+                    title={t("darkMode")}
+                    onPress={toggleDarkTheme}
+                    rightComponent={() => (
+                        <Switch
+                            value={isDarkModeOn}
+                            onValueChange={toggleDarkTheme}
+                        ></Switch>
+                    )}
+                ></SettingsRow>
+                <Divider />
+                <LanguageDropdownRow />
+                <Divider />
+                <About />
+            </View>
+        </Layout>
+    );
+};
+
+const About = () => {
+    const { t } = useTranslation();
+    return (
+        <View style={{ marginTop: "auto", marginHorizontal: 16 }}>
+            <Paragraph>
+                {t("buildVersion")} {version.jsBuildNumber}
+            </Paragraph>
+            <Paragraph>{t("copyright")}</Paragraph>
         </View>
     );
 };
 
-export default SettingsScreen;
+const mapStateToProps: MapStateToProps<StateProps> = (state) => ({
+    isDarkModeOn: state.app.isDarkModeOn,
+});
+
+const mapDispatchToProps: DispatchProps = {
+    toggleDarkTheme,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsScreen);

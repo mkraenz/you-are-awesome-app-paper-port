@@ -6,6 +6,7 @@ import { useTheme } from "react-native-paper";
 import TabBarIcon from "../components/navigation/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
 import SettingsScreen from "../screens/SettingsScreen";
+import ShareScreen from "../screens/ShareScreen";
 import { Route } from "./Route";
 
 const Tab = createMaterialBottomTabNavigator();
@@ -15,7 +16,16 @@ const NavigationApp = () => {
     const { t } = useTranslation();
     return (
         <NavigationContainer theme={theme as any}>
-            <Tab.Navigator>
+            <Tab.Navigator initialRouteName={t(Route.Home)}>
+                <Tab.Screen
+                    name={t(Route.Share)}
+                    component={ShareScreen}
+                    options={{
+                        tabBarIcon: ({ focused }) => (
+                            <TabBarIcon focused={focused} name="share-alt" />
+                        ),
+                    }}
+                />
                 <Tab.Screen
                     name={t(Route.Home)}
                     component={HomeScreen}
@@ -26,7 +36,7 @@ const NavigationApp = () => {
                     }}
                 />
                 <Tab.Screen
-                    name={Route.Settings}
+                    name={t(Route.Settings)}
                     component={SettingsScreen}
                     options={{
                         tabBarIcon: ({ focused }) => (
