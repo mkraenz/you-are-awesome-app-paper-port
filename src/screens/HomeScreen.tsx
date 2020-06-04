@@ -3,6 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { Card, Paragraph, Title, useTheme } from "react-native-paper";
 import { connect } from "react-redux";
 import Layout from "../components/common/Layout";
+import RefreshPostsView from "../components/RefreshPostsView";
 import { Route } from "../navigation/Route";
 import { IPostContent } from "../state/state/IPost";
 import { MapStateToProps } from "../state/state/MapStateToProps";
@@ -10,6 +11,8 @@ import { FullTheme } from "../themes/theme";
 
 const styles = StyleSheet.create({
     container: {
+        width: "100%",
+        height: "100%",
         flex: 1,
         justifyContent: "center",
         alignItems: "stretch",
@@ -31,16 +34,20 @@ const HomeScreen: FC<Props> = ({ post }) => {
     });
     return (
         <Layout route={Route.Home}>
-            <View style={styles.container}>
-                <Card style={themedStyles.card}>
-                    <Card.Content>
-                        <Title style={{ color: "white" }}>{post.text}</Title>
-                        <Paragraph style={{ color: "white" }}>
-                            {post.author} from {post.country}
-                        </Paragraph>
-                    </Card.Content>
-                </Card>
-            </View>
+            <RefreshPostsView>
+                <View style={styles.container}>
+                    <Card style={themedStyles.card}>
+                        <Card.Content>
+                            <Title style={{ color: "white" }}>
+                                {post.text}
+                            </Title>
+                            <Paragraph style={{ color: "white" }}>
+                                {post.author} from {post.country}
+                            </Paragraph>
+                        </Card.Content>
+                    </Card>
+                </View>
+            </RefreshPostsView>
         </Layout>
     );
 };

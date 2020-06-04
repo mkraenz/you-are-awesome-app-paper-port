@@ -21,12 +21,10 @@ export interface IPostsFetchSucceeded {
     };
 }
 
-export interface IPostsFetchRequested {
-    type: ActionType.PostsFetchRequested;
-    payload: {
-        now: Date;
-    };
-}
+export type IPostsFetchRequested = IActionWithPayload<
+    ActionType.PostsFetchRequested,
+    { now: Date }
+>;
 
 export interface IPostsFetchFailed {
     type: ActionType.PostsFetchFailed;
