@@ -11,7 +11,6 @@ import SettingsScreen from "../screens/SettingsScreen";
 import { Route } from "./Route";
 
 const Tab = createMaterialBottomTabNavigator();
-``;
 const NavigationApp = () => {
     const theme = useTheme();
     const { t } = useTranslation();

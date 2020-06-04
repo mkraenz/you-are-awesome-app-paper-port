@@ -1,4 +1,3 @@
-import { NavigationProp } from "@react-navigation/native";
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { Alert } from "react-native";
@@ -18,7 +17,7 @@ interface StateProps {
 interface DispatchProps {
     addPost: (post: IPost) => void;
 }
-type Props = StateProps & DispatchProps & NavigationProp<{ home: {} }>;
+type Props = StateProps & DispatchProps;
 
 const ContributionScreen: FC<Props> = ({ connectedToInternet, addPost }) => {
     const { t } = useTranslation();

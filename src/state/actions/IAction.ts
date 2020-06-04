@@ -1,10 +1,15 @@
 import { IPost, PostWithDate } from "../state/IPost";
 import { ActionType } from "./ActionType";
 import { IAppAction } from "./IAppAction";
+import { INetworkAction } from "./INetworkAction";
+import { SendPostAction } from "./SendPostAction";
 import { IActionWithPayload } from "./utils";
 
-// TODO consider approach similar to the financial-app
-export type IAnyAction = IPostAction | IAppAction;
+export type IAnyAction =
+    | IPostAction
+    | IAppAction
+    | INetworkAction
+    | SendPostAction;
 
 export type IPostAction =
     | IPostSendRequested
