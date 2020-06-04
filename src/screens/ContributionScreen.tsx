@@ -23,10 +23,6 @@ type Props = StateProps & DispatchProps & NavigationProp<{ home: {} }>;
 const ContributionScreen: FC<Props> = ({ connectedToInternet, addPost }) => {
     const { t } = useTranslation();
     const handleSubmit = (post: IPostContent) => {
-        if (!connectedToInternet) {
-            Alert.alert("No Internet Connection.");
-            return;
-        }
         addPost({
             ...post,
             id: v4(),

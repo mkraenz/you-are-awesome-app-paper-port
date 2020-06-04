@@ -2,12 +2,15 @@ import React, { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { StyleSheet, View } from "react-native";
 import { Button, TextInput } from "react-native-paper";
+import { connect } from "react-redux";
 import { IPostContent } from "../../state/state/IPost";
+import { MapStateToProps } from "../../state/state/MapStateToProps";
 
 interface Props {
+    connectedToInternet: boolean;
     handleSubmit: (post: IPostContent) => void;
 }
-const AddPostInput: FC<Props> = ({ handleSubmit }) => {
+const AddPostInput: FC<Props> = ({ handleSubmit, connectedToInternet }) => {
     const [text, setText] = useState("");
     const [author, setAuthor] = useState("");
     const [country, setCountry] = useState("");
@@ -59,6 +62,7 @@ const AddPostInput: FC<Props> = ({ handleSubmit }) => {
                     handleSubmit({ text, author, country });
                     resetInputs();
                 }}
+                disabled={!connectedToInternet}
             >
                 {t("contributeSubmit")}
             </Button>
@@ -78,4 +82,8 @@ const styles = StyleSheet.create({
     },
 });
 
-export default AddPostInput;
+const mapStateToProps: MapStateToProps<Pick<Props, "connectedToInternet">> = (
+    state
+) => ({ connectedToInternet: state.network.connected });
+
+export default connect(mapStateToProps)(AddPostInput);
