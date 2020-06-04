@@ -18,7 +18,6 @@ const TIMEOUT_EXCEEDED =
 function* fetchPostsWorkerSaga(
     action: IPostsFetchRequested | IPostsFetchFailed
 ) {
-    console.log("fetch post worker saga");
     const fetchPostRequested =
         action.type === ActionType.PostsFetchRequested
             ? action
@@ -43,7 +42,6 @@ function* fetchPostsWorkerSaga(
                 posts: posts,
             },
         };
-        console.log({ success });
         yield put(success);
     } catch (e) {
         yield* handleFetchFailed(e, fetchPostRequested);

@@ -13,6 +13,10 @@ type keys =
     | "contributeAwesomeMessageLong"
     | "contributeCountry"
     | "contributeSubmit"
+    | "contributionStayTuned"
+    | "contributionThanks"
+    | "contributionMember"
+    | "contributionAlertButton"
     | "contributeName";
 
 export interface ITranslations extends Resource {
@@ -52,6 +56,12 @@ const localization: {
             contributeCountry: "Country",
             contributeName: "First Name",
             contributeSubmit: "Submit",
+            contributionStayTuned:
+                "\n\nBecause of the limited amount of messages we can show, we select contributions by hand. With some luck, your awesome message will be chosen soon, too. So stay tuned! :)",
+            contributionThanks: "Thanks for your contribution!",
+            contributionMember:
+                "You are a valued member of our awesome community.\nYour message:\n",
+            contributionAlertButton: "Awesome!",
         },
     },
     de: {
@@ -72,6 +82,12 @@ const localization: {
             contributeCountry: "Land",
             contributeName: "Vorname",
             contributeSubmit: "Senden",
+            contributionStayTuned:
+                "\n\nAufgrund der geringen Anzahl an Nachrichten, die wir jeden Tag zeigen können, wählen wir Beiträge per Hand aus. Mit ein wenig Glück ist deine Nachricht in Kürze für alle in der Community sichtbar. Freu dich darauf! :)",
+            contributionThanks: "Danke für deinen Beitrag!",
+            contributionMember:
+                "Du bist ein wertvolles Mitglied unserer awesome Community.\nDeine Nachricht:\n",
+            contributionAlertButton: "Awesome!",
         },
     },
     ja: {
@@ -93,6 +109,13 @@ const localization: {
             contributeCountry: "国",
             contributeName: "ニックネーム",
             contributeSubmit: "送信",
+            // TODO
+            contributionStayTuned:
+                "\n\nBecause of the limited amount of messages we can show, we select contributions by hand. With some luck, your awesome message will be chosen soon, too. So stay tuned! :)",
+            contributionMember:
+                "私達のコミュニティーの大事な一員でいてくれてありがとうございます。\n送ったメッセージ:\n",
+            contributionThanks: "参加してくれてありがとうございます。",
+            contributionAlertButton: "素晴らしい",
         },
     },
 };

@@ -1,5 +1,6 @@
 import { NavigationProp } from "@react-navigation/native";
 import React, { FC } from "react";
+import { useTranslation } from "react-i18next";
 import { Alert } from "react-native";
 import { connect } from "react-redux";
 import { v4 } from "uuid";
@@ -20,6 +21,7 @@ interface DispatchProps {
 type Props = StateProps & DispatchProps & NavigationProp<{ home: {} }>;
 
 const ContributionScreen: FC<Props> = ({ connectedToInternet, addPost }) => {
+    const { t } = useTranslation();
     const handleSubmit = (post: IPostContent) => {
         if (!connectedToInternet) {
             Alert.alert("No Internet Connection.");
@@ -29,15 +31,13 @@ const ContributionScreen: FC<Props> = ({ connectedToInternet, addPost }) => {
             ...post,
             id: v4(),
         });
-        // TODO translations
-        const stayTuned =
-            "\n\nBecause of the limited amount of messages we can show, we select contributions by hand. With some luck, your awesome message will be chosen soon, too. So stay tuned! :)";
+        const stayTuned = t("contributionStayTuned");
         Alert.alert(
-            "Thanks for your contribution!",
-            `You are a valued member of our awesome community. \n Your message: \n ${post.text}${stayTuned}`,
+            t("contributionThanks"),
+            `${t("contributionMember")}${post.text}${stayTuned}`,
             [
                 {
-                    text: "Awesome!",
+                    text: t("contributionAlertButton"),
                 },
             ]
         );
@@ -45,7 +45,7 @@ const ContributionScreen: FC<Props> = ({ connectedToInternet, addPost }) => {
 
     return (
         <Layout route={Route.Contribute}>
-            {connectedToInternet && <OfflineNotice />}
+            {!connectedToInternet && <OfflineNotice />}
             <AddPostInput handleSubmit={handleSubmit} />
         </Layout>
     );
