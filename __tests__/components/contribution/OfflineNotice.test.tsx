@@ -2,7 +2,7 @@ import React from "react";
 import "react-native";
 // Note: test renderer must be required after react-native.
 import renderer from "react-test-renderer";
-import OfflineNotice from "../../../src/components/contribution/OfflineNotice";
+import OfflineNotice from "../../../src/components/common/OfflineNotice";
 
 it("renders correctly", () => {
     const tree = renderer.create(<OfflineNotice />).toJSON();

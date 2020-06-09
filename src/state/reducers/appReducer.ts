@@ -6,6 +6,8 @@ import { IAppState } from "../state/IAppState";
 export const appReducer: Reducer<IAppState, IAppAction> = (
     state = {
         isDarkModeOn: false,
+        pushNotificationsEnabled: false,
+        pushNotificationsScheduledTime: new Date(0),
     },
     action
 ) => {
@@ -14,6 +16,18 @@ export const appReducer: Reducer<IAppState, IAppAction> = (
             return {
                 ...state,
                 isDarkModeOn: !state.isDarkModeOn,
+            };
+        case ActionType.SetPushNotificationsState:
+        case ActionType.ReadSettingsSucceeded:
+            return {
+                ...state,
+                pushNotificationsEnabled: action.payload.enabled,
+                pushNotificationsScheduledTime: action.payload.scheduledTime,
+            };
+        case ActionType.ChangePushNotificationTime:
+            return {
+                ...state,
+                pushNotificationsScheduledTime: action.payload.scheduledTime,
             };
     }
     return state;

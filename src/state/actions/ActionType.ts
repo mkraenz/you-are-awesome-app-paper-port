@@ -10,7 +10,7 @@ export enum ActionType {
     PostSendRequested = "PostSendRequested",
     PostSendSucceeded = "PostSendSucceeded",
     NetInfoChanged = "NetInfoChanged",
-    SetNotificationsState = "SetNotificationsState",
+    SetPushNotificationsState = "SetPushNotificationsState",
     ChangePushNotificationTime = "ChangePushNotificationTime",
     ReadSettingsRequested = "ReadSettingsRequested",
     ReadSettingsSucceeded = "ReadSettingsSucceeded",

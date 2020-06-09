@@ -17,7 +17,9 @@ type keys =
     | "contributionThanks"
     | "contributionMember"
     | "contributionAlertButton"
-    | "contributeName";
+    | "contributeName"
+    | "notificationsEnable"
+    | "notificationsSetTime";
 
 export interface ITranslations extends Resource {
     default: { [key in keys]: string } & { [key in Route]: string };
@@ -62,6 +64,8 @@ const localization: {
             contributionMember:
                 "You are a valued member of our awesome community.\nYour message:\n",
             contributionAlertButton: "Awesome!",
+            notificationsEnable: "Daily notifications",
+            notificationsSetTime: "Notification time",
         },
     },
     de: {
@@ -88,6 +92,8 @@ const localization: {
             contributionMember:
                 "Du bist ein wertvolles Mitglied unserer awesome Community.\nDeine Nachricht:\n",
             contributionAlertButton: "Awesome!",
+            notificationsEnable: "Tägliche Benachrichtigungen",
+            notificationsSetTime: "Benachrichtigung um",
         },
     },
     ja: {
@@ -116,6 +122,8 @@ const localization: {
                 "私達のコミュニティーの大事な一員でいてくれてありがとうございます。\n送ったメッセージ:\n",
             contributionThanks: "参加してくれてありがとうございます。",
             contributionAlertButton: "素晴らしい",
+            notificationsEnable: "プッシュ通知（毎日）",
+            notificationsSetTime: "通知時間",
         },
     },
 };

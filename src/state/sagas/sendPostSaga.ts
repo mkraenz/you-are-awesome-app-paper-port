@@ -38,7 +38,6 @@ function* sendPostWorkerSaga(action: IPostSendRequested | IPostSendFailed) {
         };
         yield put(success);
     } catch (e) {
-        console.log({ e });
         yield* handleSendFailed(e, postSendRequested);
     }
 }

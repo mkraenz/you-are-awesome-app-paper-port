@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { v4 } from "uuid";
 import Layout from "../components/common/Layout";
 import AddPostInput from "../components/contribution/AddPostInputs";
-import OfflineNotice from "../components/contribution/OfflineNotice";
+import OfflineNotice from "../components/common/OfflineNotice";
 import { Route } from "../navigation/Route";
 import { addPost } from "../state/action-creators/addPost";
 import { IPost, IPostContent } from "../state/state/IPost";

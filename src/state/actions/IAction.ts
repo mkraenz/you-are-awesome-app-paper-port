@@ -76,30 +76,3 @@ export interface IPostSendFailedTimeoutExceeded {
     };
     error: true;
 }
-
-export interface ISetNotificationsState {
-    type: ActionType.SetNotificationsState;
-    payload: {
-        enabled: boolean;
-        scheduledTime: Date | null;
-    };
-}
-
-export interface IChangePushNotificationTime {
-    type: ActionType.ChangePushNotificationTime;
-    payload: {
-        scheduledTime: Date;
-    };
-}
-
-export interface IReadSettingsRequested {
-    type: ActionType.ReadSettingsRequested;
-}
-
-export interface IReadSettingsSucceeded {
-    type: ActionType.ReadSettingsSucceeded;
-    payload: {
-        enabled: boolean;
-        scheduledTime: Date | null;
-    };
-}

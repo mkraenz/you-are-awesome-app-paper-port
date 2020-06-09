@@ -25,7 +25,7 @@ export const lightTheme: FullTheme = {
         ...NavDefaultTheme.colors,
         ...DefaultTheme.colors,
         primary: Color.Blue,
-        accent: "white",
+        accent: "white", // TODO maybe split nav theme and paper theme. With the current approach, enabled switches are white on white background etc.
         accentedCard: NavDefaultTheme.colors.card,
     },
 };
