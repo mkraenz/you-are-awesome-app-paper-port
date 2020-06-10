@@ -1,3 +1,4 @@
+import { debounce } from "lodash";
 import React, { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { View } from "react-native";
@@ -11,6 +12,8 @@ import { MapStateToProps } from "../../state/state/MapStateToProps";
 import OfflineNotice from "../common/OfflineNotice";
 import { askNotificationPermissions } from "./askNotificationPermissions";
 import SettingsRow from "./SettingsRow";
+
+const DEBOUNCE_TIMEOUT = 500;
 
 interface IStateProps {
     enabled: boolean;
@@ -36,15 +39,15 @@ const PushNotificationSettings: FC<Props> = ({
     const [openTimepicker, setOpen] = useState(false);
     const disabled = !connectedToInternet;
 
-    const toggleNotifications = () => {
+    const toggleNotifications = debounce(() => {
         const newScheduledTime = getScheduledTimeOrDefault(scheduledTime);
         setNotificationsState(!enabled, newScheduledTime);
-    };
-    const setNotificationTime = async (date: Date) => {
+    }, DEBOUNCE_TIMEOUT);
+    const setNotificationTime = debounce(async (date: Date) => {
         setOpen(false);
         await askNotificationPermissions();
         changePushNotificationTime(date);
-    };
+    }, DEBOUNCE_TIMEOUT);
 
     const renderNotificationTimeRight = () => {
         if (enabled) {
