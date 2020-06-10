@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import "react-native";
+import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 import { Provider } from "react-redux";
 // Note: test renderer must be required after react-native.
 import renderer from "react-test-renderer";
@@ -7,10 +8,12 @@ import createMockStore from "redux-mock-store";
 import ContributionScreen from "../../src/screens/ContributionScreen";
 import TestLocalizationProvider from "../helpers/TestLocalizationProvider";
 
-const TranslatedContributionScreen: FC = () => (
-    <TestLocalizationProvider>
-        <ContributionScreen />
-    </TestLocalizationProvider>
+const ConfiguredContributionScreen: FC = () => (
+    <PaperProvider theme={DefaultTheme}>
+        <TestLocalizationProvider>
+            <ContributionScreen />
+        </TestLocalizationProvider>
+    </PaperProvider>
 );
 
 it("renders correctly", () => {
@@ -23,7 +26,7 @@ it("renders correctly", () => {
     const tree = renderer
         .create(
             <Provider store={store}>
-                <TranslatedContributionScreen />
+                <ConfiguredContributionScreen />
             </Provider>
         )
         .toJSON();
@@ -41,7 +44,7 @@ it("renders no connection notify if disconnected from internet", () => {
     const tree = renderer
         .create(
             <Provider store={store}>
-                <TranslatedContributionScreen />
+                <ConfiguredContributionScreen />
             </Provider>
         )
         .toJSON();

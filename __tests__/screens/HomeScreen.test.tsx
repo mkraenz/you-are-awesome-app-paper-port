@@ -1,5 +1,6 @@
 import React from "react";
 import "react-native";
+import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 import { Provider } from "react-redux";
 // Note: test renderer must be required after react-native.
 import renderer from "react-test-renderer";
@@ -22,9 +23,11 @@ it("renders correctly", () => {
     const tree = renderer
         .create(
             <Provider store={store}>
-                <TestLocalizationProvider>
-                    <HomeScreen />
-                </TestLocalizationProvider>
+                <PaperProvider theme={DefaultTheme}>
+                    <TestLocalizationProvider>
+                        <HomeScreen />
+                    </TestLocalizationProvider>
+                </PaperProvider>
             </Provider>
         )
         .toJSON();
