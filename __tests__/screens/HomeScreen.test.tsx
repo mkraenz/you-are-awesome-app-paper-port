@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import renderer from "react-test-renderer";
 import createMockStore from "redux-mock-store";
 import HomeScreen from "../../src/screens/HomeScreen";
+import TestLocalizationProvider from "../helpers/TestLocalizationProvider";
 
 it("renders correctly", () => {
     const store = createMockStore([])({
@@ -21,7 +22,9 @@ it("renders correctly", () => {
     const tree = renderer
         .create(
             <Provider store={store}>
-                <HomeScreen />
+                <TestLocalizationProvider>
+                    <HomeScreen />
+                </TestLocalizationProvider>
             </Provider>
         )
         .toJSON();

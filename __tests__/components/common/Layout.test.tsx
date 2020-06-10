@@ -4,8 +4,15 @@ import "react-native";
 import renderer from "react-test-renderer";
 import Layout from "../../../src/components/common/Layout";
 import { Route } from "../../../src/navigation/Route";
+import TestLocalizationProvider from "../../helpers/TestLocalizationProvider";
 
 it("renders correctly", () => {
-    const tree = renderer.create(<Layout route={Route.Home} />).toJSON();
+    const tree = renderer
+        .create(
+            <TestLocalizationProvider>
+                <Layout route={Route.Home} />
+            </TestLocalizationProvider>
+        )
+        .toJSON();
     expect(tree).toMatchSnapshot();
 });

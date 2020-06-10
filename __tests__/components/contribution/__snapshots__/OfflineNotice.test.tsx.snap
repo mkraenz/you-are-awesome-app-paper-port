@@ -28,7 +28,7 @@ exports[`renders correctly 1`] = `
       ]
     }
   >
-    noInternet
+    No Internet Connection
   </Text>
 </View>
 `;

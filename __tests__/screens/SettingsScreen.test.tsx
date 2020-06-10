@@ -1,10 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 import "react-native";
 import { Provider } from "react-redux";
 // Note: test renderer must be required after react-native.
 import renderer from "react-test-renderer";
 import createMockStore from "redux-mock-store";
 import SettingsScreen from "../../src/screens/SettingsScreen";
+import TestLocalizationProvider from "../helpers/TestLocalizationProvider";
 
 const _Date = Date;
 
@@ -16,6 +17,12 @@ const mockGlobalDate = (nowMock: Date) => {
 };
 
 afterEach(() => (global.Date = _Date));
+
+const TranslatedSettingsScreen: FC = () => (
+    <TestLocalizationProvider>
+        <SettingsScreen />
+    </TestLocalizationProvider>
+);
 
 it("renders correctly for disabled notifications", () => {
     // far in the future so that the snapshot does not change
@@ -36,7 +43,7 @@ it("renders correctly for disabled notifications", () => {
     const tree = renderer
         .create(
             <Provider store={store}>
-                <SettingsScreen />
+                <TranslatedSettingsScreen />
             </Provider>
         )
         .toJSON();
@@ -63,7 +70,7 @@ it("renders correctly for enabled notifications", () => {
     const tree = renderer
         .create(
             <Provider store={store}>
-                <SettingsScreen />
+                <TranslatedSettingsScreen />
             </Provider>
         )
         .toJSON();
@@ -90,7 +97,7 @@ it("displays netinfo box for no internet connection", () => {
     const tree = renderer
         .create(
             <Provider store={store}>
-                <SettingsScreen />
+                <TranslatedSettingsScreen />
             </Provider>
         )
         .toJSON();

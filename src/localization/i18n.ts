@@ -1,26 +1,20 @@
-import * as Localization from "expo-localization";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import localization from "./localization";
 
 const DEBUG = false;
 
-const languageDetector = {
-    type: "languageDetector" as const,
-    async: true, // flags below detection to be async
-    detect: (callback: (locale: string) => void) => {
-        callback(Localization.locale);
-    },
-    init: () => {},
-    cacheUserLanguage: () => {},
-};
-
-const resources = localization;
-
-i18n.use(languageDetector)
-    .use(initReactI18next)
-    .init({
-        resources,
+const myi18n = (languageDetector?: {
+    type: "languageDetector";
+    async: boolean;
+    detect: (callback: (locale: string) => void) => void;
+    init: () => void;
+    cacheUserLanguage: () => void;
+}) => {
+    const i18 = i18n;
+    if (languageDetector) i18n.use(languageDetector);
+    i18.use(initReactI18next).init({
+        resources: localization,
         fallbackLng: "en",
         defaultNS: "default",
         debug: DEBUG,
@@ -29,5 +23,7 @@ i18n.use(languageDetector)
         },
         cleanCode: true,
     });
+    return i18;
+};
 
-export default i18n;
+export default myi18n;

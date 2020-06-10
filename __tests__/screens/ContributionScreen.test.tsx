@@ -1,10 +1,17 @@
-import React from "react";
+import React, { FC } from "react";
 import "react-native";
 import { Provider } from "react-redux";
 // Note: test renderer must be required after react-native.
 import renderer from "react-test-renderer";
 import createMockStore from "redux-mock-store";
 import ContributionScreen from "../../src/screens/ContributionScreen";
+import TestLocalizationProvider from "../helpers/TestLocalizationProvider";
+
+const TranslatedContributionScreen: FC = () => (
+    <TestLocalizationProvider>
+        <ContributionScreen />
+    </TestLocalizationProvider>
+);
 
 it("renders correctly", () => {
     const store = createMockStore([])({
@@ -16,7 +23,7 @@ it("renders correctly", () => {
     const tree = renderer
         .create(
             <Provider store={store}>
-                <ContributionScreen />
+                <TranslatedContributionScreen />
             </Provider>
         )
         .toJSON();
@@ -34,7 +41,7 @@ it("renders no connection notify if disconnected from internet", () => {
     const tree = renderer
         .create(
             <Provider store={store}>
-                <ContributionScreen />
+                <TranslatedContributionScreen />
             </Provider>
         )
         .toJSON();
