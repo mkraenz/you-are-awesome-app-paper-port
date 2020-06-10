@@ -25,18 +25,16 @@ interface Props {
 
 const HomeScreen: FC<Props> = ({ post }) => {
     const theme = useTheme() as FullTheme;
-    const themedStyles = StyleSheet.create({
-        card: theme.dark
-            ? {
-                  backgroundColor: theme.colors.accentedCard,
-              }
-            : { backgroundColor: theme.colors.primary },
-    });
+    const cardStyle = theme.dark
+        ? {
+              backgroundColor: theme.colors.accentedCard,
+          }
+        : { backgroundColor: theme.colors.primary };
     return (
         <Layout route={Route.Home}>
             <RefreshPostsView>
                 <View style={styles.container}>
-                    <Card style={themedStyles.card}>
+                    <Card style={cardStyle}>
                         <Card.Content>
                             <Title style={{ color: "white" }}>
                                 {post.text}

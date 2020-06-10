@@ -9,6 +9,16 @@ import { connect } from "react-redux";
 import { requestFetchPosts } from "../state/action-creators/requestFetchPosts";
 import { MapStateToProps } from "../state/state/MapStateToProps";
 
+const styles = StyleSheet.create({
+    container: {
+        width: "100%",
+        height: "100%",
+    },
+    scrollView: {
+        flex: 1,
+    },
+});
+
 interface Props {
     requestFetchPosts: (now: Date) => void;
     refreshing: boolean;
@@ -39,16 +49,6 @@ class RefreshPostsView extends Component<Props> {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        width: "100%",
-        height: "100%",
-    },
-    scrollView: {
-        flex: 1,
-    },
-});
 
 const mapStateToProps: MapStateToProps<Pick<Props, "refreshing">> = (
     state

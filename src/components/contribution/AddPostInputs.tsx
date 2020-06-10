@@ -6,10 +6,23 @@ import { connect } from "react-redux";
 import { IPostContent } from "../../state/state/IPost";
 import { MapStateToProps } from "../../state/state/MapStateToProps";
 
+const styles = StyleSheet.create({
+    container: {
+        marginTop: 8,
+    },
+    input: {
+        marginBottom: 8,
+    },
+    button: {
+        marginTop: 8,
+    },
+});
+
 interface Props {
     connectedToInternet: boolean;
     handleSubmit: (post: IPostContent) => void;
 }
+
 const AddPostInput: FC<Props> = ({ handleSubmit, connectedToInternet }) => {
     const [text, setText] = useState("");
     const [author, setAuthor] = useState("");
@@ -69,18 +82,6 @@ const AddPostInput: FC<Props> = ({ handleSubmit, connectedToInternet }) => {
         </View>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        marginTop: 8,
-    },
-    input: {
-        marginBottom: 8,
-    },
-    button: {
-        marginTop: 8,
-    },
-});
 
 const mapStateToProps: MapStateToProps<Pick<Props, "connectedToInternet">> = (
     state

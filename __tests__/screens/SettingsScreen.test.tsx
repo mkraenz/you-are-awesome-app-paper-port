@@ -25,6 +25,11 @@ it("renders correctly for disabled notifications", () => {
     const store = createMockStore([])({
         app: {
             isDarkModeOn: false,
+            pushNotificationsEnabled: false,
+            pushNotificationsScheduledTime: scheduledTime,
+        },
+        network: {
+            connected: true,
         },
     });
 
@@ -47,6 +52,11 @@ it("renders correctly for enabled notifications", () => {
     const store = createMockStore([])({
         app: {
             isDarkModeOn: false,
+            pushNotificationsEnabled: true,
+            pushNotificationsScheduledTime: scheduledTime,
+        },
+        network: {
+            connected: true,
         },
     });
 
@@ -69,6 +79,11 @@ it("displays netinfo box for no internet connection", () => {
     const store = createMockStore([])({
         app: {
             isDarkModeOn: false,
+            pushNotificationsEnabled: true,
+            pushNotificationsScheduledTime: scheduledTime,
+        },
+        network: {
+            connected: false,
         },
     });
 

@@ -10,7 +10,6 @@ import { changePushNotificationTime } from "../../state/action-creators/changePu
 import { setNotificationsState } from "../../state/action-creators/setNotificationState";
 import { MapStateToProps } from "../../state/state/MapStateToProps";
 import OfflineNotice from "../common/OfflineNotice";
-import { askNotificationPermissions } from "./askNotificationPermissions";
 import SettingsRow from "./SettingsRow";
 
 const DEBOUNCE_TIMEOUT = 500;
@@ -43,9 +42,8 @@ const PushNotificationSettings: FC<Props> = ({
         const newScheduledTime = getScheduledTimeOrDefault(scheduledTime);
         setNotificationsState(!enabled, newScheduledTime);
     }, DEBOUNCE_TIMEOUT);
-    const setNotificationTime = debounce(async (date: Date) => {
+    const setNotificationTime = debounce((date: Date) => {
         setOpen(false);
-        await askNotificationPermissions();
         changePushNotificationTime(date);
     }, DEBOUNCE_TIMEOUT);
 

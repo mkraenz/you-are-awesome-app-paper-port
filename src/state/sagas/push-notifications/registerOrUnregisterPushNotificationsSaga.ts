@@ -1,4 +1,5 @@
 import { call, takeLatest } from "redux-saga/effects";
+import { askNotificationPermissions } from "../../../api/native-api/askNotificationPermissions";
 import { registerForPushNotifications } from "../../../api/registerForPushNotifications";
 import { unregisterFromPushNotifications } from "../../../api/unregisterFromPushNotifications";
 import { ActionType } from "../../actions/ActionType";
@@ -18,6 +19,7 @@ function* registerOrUnregisterPushNotificationsWorkerSaga(
 ) {
     // ensured internet connected on higher level
     if (action.payload.enabled) {
+        yield call(askNotificationPermissions);
         yield call(registerForPushNotifications, action.payload.scheduledTime);
     } else {
         yield call(unregisterFromPushNotifications);

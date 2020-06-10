@@ -3,26 +3,29 @@ import { useTranslation } from "react-i18next";
 import { StyleSheet, View } from "react-native";
 import { Text, useTheme } from "react-native-paper";
 
+const styles = StyleSheet.create({
+    container: {
+        marginHorizontal: -100, // ensure full width
+        height: 30,
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "row",
+    },
+    text: {
+        color: "white",
+    },
+});
+
 const OfflineNotice: FC<{}> = () => {
     const { t } = useTranslation();
     const theme = useTheme();
-
-    const styles = StyleSheet.create({
-        offlineContainer: {
-            marginHorizontal: -100, // ensure full width
-            backgroundColor: theme.colors.error,
-            height: 30,
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "row",
-        },
-        offlineText: {
-            color: "white",
-        },
-    });
+    const containerStyle = {
+        ...styles.container,
+        backgroundColor: theme.colors.error,
+    };
     return (
-        <View style={styles.offlineContainer}>
-            <Text style={styles.offlineText}>{t("noInternet")}</Text>
+        <View style={containerStyle}>
+            <Text style={styles.text}>{t("noInternet")}</Text>
         </View>
     );
 };
