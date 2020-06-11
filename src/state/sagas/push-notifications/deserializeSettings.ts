@@ -1,15 +1,20 @@
 import { StorageSchema } from "../../../config";
 
-export const deserialize = (settings: [StorageSchema, string][]) => {
-    if (settings.length !== 2) {
-        throw new Error(
-            `Expected serialized settings array to have length 2, found ${settings.length}`
-        );
-    }
-    const foundDate = new Date(settings[1][1]);
+interface ISettings {
+    [StorageSchema.PushNotificationsEnabled]: string | null | undefined;
+    [StorageSchema.PushNotificationsScheduledTime]: string | null | undefined;
+}
+export const deserialize = (settings: ISettings) => {
+    const serializedEnabled = settings[StorageSchema.PushNotificationsEnabled];
+    const serializedDate =
+        settings[StorageSchema.PushNotificationsScheduledTime];
+    const enabled = serializedEnabled
+        ? Boolean(JSON.parse(serializedEnabled))
+        : false;
+    const foundDate = serializedDate ? new Date(serializedDate) : new Date(0);
     const isValidDate = !isNaN(foundDate.getTime());
     return {
-        enabled: JSON.parse(settings[0][1]) as boolean,
+        enabled,
         // TODO #35 somehow this is in UTC
         scheduledTime: isValidDate ? foundDate : new Date(0),
     };

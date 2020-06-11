@@ -2,6 +2,7 @@ import { AsyncStorage } from "react-native";
 import { call, put, takeLatest } from "redux-saga/effects";
 import { StorageSchema } from "../../../config";
 import { AwaitedReturnType } from "../../../utils/AwaitedReturnType";
+import { Unpack } from "../../../utils/Unpack";
 import { ActionType } from "../../actions/ActionType";
 import { IReadSettingsSucceeded } from "../../actions/IAppAction";
 import { deserialize } from "./deserializeSettings";
@@ -20,16 +21,16 @@ function* readSettingsWorkerSaga() {
 async function readFromAsyncStorage(): Promise<
     IReadSettingsSucceeded["payload"]
 > {
-    try {
-        const serializedSettings = (await AsyncStorage.multiGet([
-            StorageSchema.PushNotificationsEnabled,
-            StorageSchema.PushNotificationsScheduledTime,
-        ])) as [StorageSchema, string][];
-        const settings = deserialize(serializedSettings);
-        return settings;
-    } catch (error) {
-        throw error;
-    }
+    const serializedSettings = (await AsyncStorage.multiGet([
+        StorageSchema.PushNotificationsEnabled,
+        StorageSchema.PushNotificationsScheduledTime,
+    ])) as [StorageSchema, string | null][];
+    const serializedSettingsObj: Unpack<Parameters<typeof deserialize>> = {
+        [StorageSchema.PushNotificationsEnabled]: serializedSettings[0][1],
+        [StorageSchema.PushNotificationsScheduledTime]:
+            serializedSettings[1][1],
+    };
+    return deserialize(serializedSettingsObj);
 }
 
 function* readSettingsFromStorageSaga() {

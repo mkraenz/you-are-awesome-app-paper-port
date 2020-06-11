@@ -1,7 +1,7 @@
 import { ActionType } from "../actions/ActionType";
 import { ISetPushNotificationsState } from "../actions/IAppAction";
 
-export const setNotificationsState = (
+export const setPushNotificationsState = (
     enabled: boolean,
     scheduledTime: Date
 ): ISetPushNotificationsState => ({

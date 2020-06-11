@@ -14,5 +14,6 @@ module.exports = Object.assign(expoPreset, {
         "!**/jest.setup.js",
         "!**/mocks.ts",
     ],
+    coverageReporters: ["text", "lcov"],
     testPathIgnorePatterns: ["/node_modules/", "/__tests__/helpers/"],
 });

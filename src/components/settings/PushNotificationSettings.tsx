@@ -7,7 +7,7 @@ import { Divider, Subheading, Switch } from "react-native-paper";
 import { connect } from "react-redux";
 import { DEFAULT_NOTIFICATION_HOUR } from "../../config";
 import { changePushNotificationTime } from "../../state/action-creators/changePushNotificationTime";
-import { setNotificationsState } from "../../state/action-creators/setNotificationState";
+import { setPushNotificationsState } from "../../state/action-creators/setPushNotificationState";
 import { MapStateToProps } from "../../state/state/MapStateToProps";
 import OfflineNotice from "../common/OfflineNotice";
 import SettingsRow from "./SettingsRow";
@@ -104,7 +104,7 @@ const mapStateToProps: MapStateToProps<IStateProps> = (state) => ({
 });
 
 const mapDispatchToProps: IDispatchProps = {
-    setNotificationsState,
+    setNotificationsState: setPushNotificationsState,
     changePushNotificationTime,
 };
 
