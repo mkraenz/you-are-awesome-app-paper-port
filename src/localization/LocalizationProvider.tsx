@@ -11,9 +11,4 @@ const LocalizationProvider: FC = ({ children }) => {
     );
 };
 
-// const ReloadAppOnLanguageChange = withNamespaces('common', {
-//     bindI18n: 'languageChanged',
-//     bindStore: false,
-//   })(createAppContainer(WrappedStack));
-
 export default LocalizationProvider;

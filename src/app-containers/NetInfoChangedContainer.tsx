@@ -1,14 +1,11 @@
 import NetInfo, { NetInfoSubscription } from "@react-native-community/netinfo";
 import { Component, ReactNode } from "react";
 import { connect } from "react-redux";
-import { ActionType } from "../state/actions/ActionType";
-import { INetInfoChanged } from "../state/actions/INetworkAction";
+import { changeNetInfo } from "../state/action-creators/changeNetInfo";
 import { IState } from "../state/state/IState";
 
 interface Props {
     changeNetInfo: (connected: boolean) => void;
-    // Workaround: require children for fixing ts error
-    // "...has no properties in common with type ‘IntrinsicAttributes & IntrinsicClassAttributes<...'
     children: ReactNode;
 }
 
@@ -34,12 +31,7 @@ class NetInfoChangedContainer extends Component<Props> {
 
 const mapStateToProps = (state: IState) => state;
 
-const mapDispatchToProps = {
-    changeNetInfo: (connected: boolean): INetInfoChanged => ({
-        type: ActionType.NetInfoChanged,
-        payload: { connected },
-    }),
-};
+const mapDispatchToProps = { changeNetInfo };
 
 export default connect(
     mapStateToProps,

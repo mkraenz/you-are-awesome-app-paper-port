@@ -30,17 +30,16 @@ const HomeScreen: FC<Props> = ({ post }) => {
               backgroundColor: theme.colors.accentedCard,
           }
         : { backgroundColor: theme.colors.primary };
+    const { author, text, country } = post;
     return (
         <Layout route={Route.Home}>
             <RefreshPostsView>
                 <View style={styles.container}>
                     <Card style={cardStyle}>
                         <Card.Content>
-                            <Title style={{ color: "white" }}>
-                                {post.text}
-                            </Title>
+                            <Title style={{ color: "white" }}>{text}</Title>
                             <Paragraph style={{ color: "white" }}>
-                                {post.author} from {post.country}
+                                {author} from {country}
                             </Paragraph>
                         </Card.Content>
                     </Card>

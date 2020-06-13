@@ -1,7 +1,6 @@
 import React from "react";
 import { Provider as PaperProvider } from "react-native-paper";
 import { connect } from "react-redux";
-import NetInfoChangedContainer from "../app-containers/NetInfoChangedContainer";
 import LocalizationProvider from "../localization/LocalizationProvider";
 import NavigationApp from "../navigation/NavigationApp";
 import { MapStateToProps } from "../state/state/MapStateToProps";
@@ -14,9 +13,7 @@ interface Props {
 const ThemedApp = (props: Props) => (
     <PaperProvider theme={props.isDarkModeOn ? darkTheme : lightTheme}>
         <LocalizationProvider>
-            <NetInfoChangedContainer>
-                <NavigationApp />
-            </NetInfoChangedContainer>
+            <NavigationApp />
         </LocalizationProvider>
     </PaperProvider>
 );
