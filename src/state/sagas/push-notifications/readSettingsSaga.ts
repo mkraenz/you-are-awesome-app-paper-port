@@ -1,8 +1,8 @@
 import AsyncStorage from "@react-native-community/async-storage";
 import { call, put, takeLatest } from "redux-saga/effects";
 import { StorageSchema } from "../../../config";
-import { AwaitedReturnType } from "../../../utils/AwaitedReturnType";
-import { Unpack } from "../../../utils/Unpack";
+import { AwaitedReturnType } from "../../../utils/ts/AwaitedReturnType";
+import { Unpack } from "../../../utils/ts/Unpack";
 import { ActionType } from "../../actions/ActionType";
 import { IReadSettingsSucceeded } from "../../actions/IAppAction";
 import { deserialize } from "./deserializeSettings";

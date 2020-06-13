@@ -29,6 +29,7 @@
         "expo-localization": "~8.1.0",
         "i18next": "^19.4.5",
         "lodash": "^4.17.15",
+        "luxon": "^1.24.1",
         "react": "~16.9.0",
         "react-dom": "~16.9.0",
         "react-i18next": "^11.5.0",
@@ -47,6 +48,7 @@
     "devDependencies": {
         "@babel/core": "^7.8.6",
         "@types/lodash": "^4.14.155",
+        "@types/luxon": "^1.24.0",
         "@types/react": "~16.9.23",
         "@types/react-native": "~0.61.17",
         "@types/react-redux": "^7.1.9",

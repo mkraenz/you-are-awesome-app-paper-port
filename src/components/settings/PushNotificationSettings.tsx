@@ -1,4 +1,5 @@
 import { debounce } from "lodash";
+import { DateTime } from "luxon";
 import React, { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { View } from "react-native";
@@ -46,13 +47,13 @@ const PushNotificationSettings: FC<Props> = ({
         setOpen(false);
         changePushNotificationTime(date);
     }, DEBOUNCE_TIMEOUT);
+    const scheduledTime_ = DateTime.fromJSDate(scheduledTime);
 
     const renderNotificationTimeRight = () => {
         if (enabled) {
             return (
                 <Subheading>
-                    {scheduledTime.toLocaleTimeString()}
-                    {/* TODO better time format - maybe luxon? + centered */}
+                    {scheduledTime_.toLocaleString(DateTime.TIME_SIMPLE)}
                 </Subheading>
             );
         } else <></>;

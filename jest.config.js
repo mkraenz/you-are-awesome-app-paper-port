@@ -13,6 +13,7 @@ module.exports = Object.assign(expoPreset, {
         "!**/babel.config.js",
         "!**/jest.setup.js",
         "!**/mocks.ts",
+        "!./src/utils/ts/*.ts",
     ],
     coverageReporters: ["text", "lcov"],
     testPathIgnorePatterns: ["/node_modules/", "/__tests__/helpers/"],

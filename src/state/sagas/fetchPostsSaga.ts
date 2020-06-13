@@ -1,8 +1,8 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
 import { fetchPosts } from "../../api/fetchPosts";
 import { MAX_BACKOFF_IN_MS, URI } from "../../config";
-import { AwaitedReturnType } from "../../utils/AwaitedReturnType";
 import { todayOrRandomPost } from "../../utils/todayOrRandomPost";
+import { AwaitedReturnType } from "../../utils/ts/AwaitedReturnType";
 import { ActionType } from "../actions/ActionType";
 import {
     IPostsFetchFailed,

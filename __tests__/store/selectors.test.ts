@@ -1,12 +1,12 @@
 import {
     backoffInMs,
+    internetConnected,
     pushNotificationsEnabled,
 } from "../../src/state/selectors";
-import { IState } from "../../src/state/state/IState";
-import { Pick2 } from "../../src/utils/Pick2";
+import { Unpack } from "../../src/utils/ts/Unpack";
 
 it("backoffInMs returns backoff", () => {
-    const state = {
+    const state: Unpack<Parameters<typeof backoffInMs>> = {
         sendPost: { backoffInMs: 1337 },
     };
 
@@ -16,11 +16,21 @@ it("backoffInMs returns backoff", () => {
 });
 
 it("pushNotificationsEnabled returns the state", () => {
-    const state: Pick2<IState, "app", "pushNotificationsEnabled"> = {
+    const state: Unpack<Parameters<typeof pushNotificationsEnabled>> = {
         app: { pushNotificationsEnabled: true },
     };
 
     const result = pushNotificationsEnabled(state);
+
+    expect(result).toBe(true);
+});
+
+it("internetConnected returns the state", () => {
+    const state: Unpack<Parameters<typeof internetConnected>> = {
+        network: { connected: true },
+    };
+
+    const result = internetConnected(state);
 
     expect(result).toBe(true);
 });
