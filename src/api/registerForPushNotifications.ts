@@ -1,7 +1,7 @@
 import { Notifications } from "expo";
 import { URI } from "../config";
 
-export const registerForPushNotifications = async (timeInUtc: Date) => {
+export const registerForPushNotifications = async (time: Date) => {
     let token = await Notifications.getExpoPushTokenAsync();
     return fetch(URI.REGISTER_PUSH_NOTIFICATION, {
         method: "POST",
@@ -11,8 +11,8 @@ export const registerForPushNotifications = async (timeInUtc: Date) => {
         },
         body: JSON.stringify({
             token,
-            hour: timeInUtc.getHours(),
-            minute: timeInUtc.getMinutes(),
+            hour: time.getUTCHours(),
+            minute: time.getUTCMinutes(),
         }),
     });
 };
