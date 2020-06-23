@@ -4,7 +4,7 @@ import { Divider, Menu } from "react-native-paper";
 import { LanguageCodeToLocalizedLang } from "../../localization/localization";
 import SettingsRow from "./SettingsRow";
 
-const LanguageDropdownRow: FC = () => {
+const LanguageDropdown: FC = () => {
     const { t, i18n } = useTranslation();
     const languages = Object.values(LanguageCodeToLocalizedLang);
     const [visible, setVisible] = useState(false);
@@ -50,4 +50,4 @@ const LanguageDropdownRow: FC = () => {
     );
 };
 
-export default LanguageDropdownRow;
+export default LanguageDropdown;

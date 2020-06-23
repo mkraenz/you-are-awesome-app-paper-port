@@ -4,7 +4,7 @@ import { StyleSheet, View } from "react-native";
 import { Divider, Paragraph, Switch } from "react-native-paper";
 import { connect } from "react-redux";
 import Layout from "../components/common/Layout";
-import LanguageDropdownRow from "../components/settings/LanguageDropdown";
+import LanguageDropdown from "../components/settings/LanguageDropdown";
 import PushNotificationSettings from "../components/settings/PushNotificationSettings";
 import SettingsRow from "../components/settings/SettingsRow";
 import { Route } from "../navigation/Route";
@@ -61,7 +61,7 @@ const SettingsScreen: FC<Props> = ({
                 )}
             ></SettingsRow>
             <Divider />
-            <LanguageDropdownRow />
+            <LanguageDropdown />
             <Divider />
             <About />
         </Layout>
