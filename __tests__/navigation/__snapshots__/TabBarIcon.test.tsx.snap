@@ -23,7 +23,7 @@ exports[`renders correctly 1`] = `
 </View>
 `;
 
-exports[`renders correctly 2`] = `
+exports[`renders correctly with focus 1`] = `
 <View
   collapsable={false}
   pointerEvents="box-none"

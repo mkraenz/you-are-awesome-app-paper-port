@@ -19,7 +19,7 @@ it("renders correctly", () => {
     expect(tree).toMatchSnapshot();
 });
 
-it("renders correctly", () => {
+it("renders correctly with focus", () => {
     const tree = renderer
         .create(
             <PaperProvider theme={DefaultTheme}>
